@@ -9,49 +9,83 @@ import { THEMES } from "@/models/enums/themes";
   class="inline-flex text-primary transition any-hover:scale-125 any-hover:opacity-70"
 >
   <SunIcon
-    class="opacity-100 transition-transform dark:-rotate-90 dark:opacity-0"
+    class="opacity-100 transition-transform [theme-color=dark]:-rotate-90 [theme-color=dark]:opacity-0"
   />
   <MoonIcon
-    class="absolute rotate-90 opacity-0 transition-transform dark:rotate-0 dark:opacity-100"
+    class="absolute rotate-90 opacity-0 transition-transform [theme-color=dark]:rotate-0 [theme-color=dark]:opacity-100"
   />
   <span class="sr-only"></span>
 </button>
 
 <script
   is:inline
-  define:vars={{ darkTheme: THEMES.DARK, lightTheme: THEMES.LIGHT }}
+  define:vars={{ lightTheme: THEMES.LIGHT, darkTheme: THEMES.DARK }}
 >
+  const $root = document.documentElement;
+  const $themeToggle = document.getElementById("themeToggle");
+  const $span = document.querySelector("span.sr-only");
+  const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
+  /**
+   *
+   * @param {'dark'|'light'} theme
+   */
   const updateThemeMessage = (theme) => {
-    const translation = theme ? "oscuro" : "claro";
+    const translation = theme === darkTheme ? "oscuro" : "claro";
     const actualThemeMsg = `Alternar tema, el tema actual es ${translation}`;
-    const span = document.querySelector("span.sr-only");
-    span.innerHTML = actualThemeMsg;
-
+    $span ? ($span.innerHTML = actualThemeMsg) : null;
     window.dispatchEvent(new Event("theme-changed"));
   };
-
+  /**
+   *
+   */
   const handleToggleClick = () => {
-    const element = document.documentElement;
-    element.classList.toggle(darkTheme);
-
-    const isDark = element.classList.contains(darkTheme);
-    localStorage.setItem("theme", isDark ? darkTheme : lightTheme);
-
-    updateThemeMessage(isDark);
+    const isDark = $root.getAttribute("theme-color") === darkTheme;
+    const currentTheme = isDark ? lightTheme : darkTheme;
+    $root.setAttribute("theme-color", currentTheme);
+    localStorage.setItem("theme", currentTheme);
+    updateThemeMessage(currentTheme);
   };
-
+  /**
+   *
+   * @param {MediaQueryListEvent} ev
+   */
   const handleThemePreferenceChange = (ev) => {
-    const isDark = document.documentElement.classList.contains("dark");
+    const isDark = $root.getAttribute("theme-color") === darkTheme;
     const toggle = (ev.matches && !isDark) || (!ev.matches && isDark);
     if (toggle) handleToggleClick();
   };
-
-  const darkModePreference = window.matchMedia("(prefers-color-scheme: dark)");
+  // updateThemeMessage(window.getThemePreference());
   darkModePreference.addEventListener("change", handleThemePreferenceChange);
   darkModePreference.addListener(handleThemePreferenceChange); // backward compatibility
+  $themeToggle.addEventListener("click", handleToggleClick);
 
-  document
-    .getElementById("themeToggle")
-    .addEventListener("click", handleToggleClick);
-  updateThemeMessage(window.getThemePreference());
+  // Capturamos el botón de cambio de tema
+  // const $themeToggle = document.getElementById("themeToggle");
+
+  // Función para cambiar el tema
+  const themeToggle = () => {
+    // Escuchamos los cambios en el atributo theme-color
+    const observer = new MutationObserver((mutationsList) => {
+      for (let mutation of mutationsList) {
+        if (mutation.attributeName === "theme-color") {
+          const currentTheme = $root.getAttribute("theme-color");
+
+          // Realizar acciones correspondientes al cambio de tema
+          if (currentTheme === darkTheme) {
+            // Código para tema oscuro
+            console.log("Tema oscuro activado");
+          } else {
+            // Código para tema claro
+            console.log("Tema claro activado");
+          }
+        }
+      }
+    });
+
+    // Configuramos el observador para observar los cambios en el atributo theme-color
+    observer.observe($root, { attributes: true });
+  };
+
+  // Llamamos a la función themeToggle
+  themeToggle();
 </script>

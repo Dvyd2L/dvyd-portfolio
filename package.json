@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.6",
+    "@astrojs/tailwind": "^5.1.0",
+    "@midudev/tailwind-animations": "^0.0.7",
     "astro": "^4.4.6",
+    "tailwindcss": "^3.4.1",
     "three": "^0.162.0",
     "typescript": "^5.3.3"
   },
