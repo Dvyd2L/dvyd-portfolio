@@ -1,0 +1,9 @@
+@layer themes {
+  [theme-color="pink"] {
+    --color-primary: #f87dcb;
+    --color-secondary: #552740;
+
+    --background-color: #3b0d2e;
+    --background-twitch: var(--color-twitch-ice);
+  }
+}

@@ -1,0 +1,9 @@
+@layer themes {
+  [theme-color="green"] {
+    --color-primary: #b4f87d;
+    --color-secondary: #275529;
+
+    --background-color: #0d3b19;
+    --background-twitch: var(--color-twitch-ice);
+  }
+}

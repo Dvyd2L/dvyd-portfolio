@@ -5,26 +5,12 @@
       sans-serif;
   }
 
-  /* [data-bs-theme="auto"] {
-          color-scheme: dark light;
-        }
-        [data-bs-theme="light"] {
-          --color-text: canvasText;
-          --color-bg: canvas;
-          color-scheme: light;
-        }
-        [data-bs-theme="dark"] {
-          --color-text: canvasText;
-          --color-bg: canvas;
-          color-scheme: dark;
-        } */
-
   body {
     color: var(--color-text);
     background-color: var(--color-bg);
   }
 
-  *,
+  /* *,
   *::after,
   *::before {
     box-sizing: border-box;
@@ -32,7 +18,7 @@
 
     scrollbar-width: thin;
     scrollbar-color: var(--color-bg-hexagons) transparent;
-  }
+  } */
 
   a {
     text-decoration: none;

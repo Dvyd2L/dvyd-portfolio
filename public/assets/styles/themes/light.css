@@ -1,0 +1,9 @@
+@layer themes {
+  [theme-color="light"] {
+    --color-primary: #333;
+    --color-secondary: #ddd;
+
+    --background-color: #bbb;
+    --background-twitch: #000;
+  }
+}

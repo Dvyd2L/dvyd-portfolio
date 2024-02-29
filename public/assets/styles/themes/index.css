@@ -1,0 +1,11 @@
+@import url("./dark.css");
+@import url("./green.css");
+@import url("./light.css");
+@import url("./pink.css");
+
+@layer themes {
+  :root {
+    --color-twitch: #9146ff;
+    --color-twitch-ice: #f0f0ff;
+  }
+}
