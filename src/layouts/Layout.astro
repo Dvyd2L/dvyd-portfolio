@@ -38,24 +38,7 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   @import url("/public/styles/default.css");
-  
-  :root {
-    --color-primary: #333;
-    --color-secondary: #ddd;
-    --color-twitch: #9146ff;
-    --color-twitch-ice: #f0f0ff;
-
-    --background-color: #bbb;
-    --background-twitch: #000;
-  }
-
-  [theme-color="dark"] {
-    --color-primary: #ddd;
-    --color-secondary: #333;
-
-    --background-color: #333;
-    --background-twitch: var(--color-twitch-ice);
-  }
+  @import url("/public/assets/themes");
 
   html {
     font-family: "Monaspace Krypton", system-ui, sans-serif;
