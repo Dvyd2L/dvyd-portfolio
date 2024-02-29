@@ -1,0 +1,20 @@
+{
+    "head": {
+        "author": "David Llopis Laguna | @dvyd2L",
+        "description": "This is my portfolio. Here you will find information about me and the projects I have worked on."
+    },
+    "pages": {
+        "home": {
+            "title": "Home",
+            "description": "This is my portfolio. Here you will find information about me and the projects I have worked on."
+        },
+        "projects": {
+            "title": "Projects",
+            "description": "Here you will find information about the projects I have worked on."
+        },
+        "about": {
+            "title": "About me",
+            "description": "Here you will find information about me."
+        }
+    }
+}

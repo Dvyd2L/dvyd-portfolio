@@ -2,5 +2,19 @@
     "head": {
         "author": "David Llopis Laguna | @dvyd2L",
         "description": "Este es mi portofolio. Aquí encontraras información sobre mi y sobre los proyectos en los que he trabajado."
+    },
+    "pages": {
+        "home": {
+            "title": "Inicio",
+            "description": "Este es mi portofolio. Aquí encontraras información sobre mi y sobre los proyectos en los que he trabajado."
+        },
+        "projects": {
+            "title": "Proyectos",
+            "description": "Aquí encontraras información sobre los proyectos en los que he trabajado."
+        },
+        "about": {
+            "title": "Sobre mi",
+            "description": "Aquí encontraras información sobre mi."
+        }
     }
 }
